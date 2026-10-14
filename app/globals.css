@@ -1,0 +1,473 @@
+/* ==========================================================================
+   MONIXA — design tokens, reset, primitives
+
+   Direction: minified. One typeface, flat surfaces, hairline rules between
+   sections, generous whitespace. Hierarchy comes from size, weight and space.
+
+   Brand
+     Electric Indigo   #6500FE   primary accent
+     Lone White        #FFFFFF   ground
+     Midnight Indigo   #0D0A1C   ink and inverted surfaces
+   Secondary (sparingly — to highlight, never to decorate)
+     Orange #FF8B00 · Light Orange #FFE09C · Red #DC143C · Light Red #FFA9AF
+   ========================================================================== */
+
+/* ---------- 1. TOKENS ---------- */
+
+:root {
+  /* Brand */
+  --indigo:          #6500FE;
+  --indigo-deep:     #5200cc;
+  --indigo-light:    #a77bff;
+  --indigo-soft:     #f2ebff;
+  --white:           #ffffff;
+  --midnight:        #0d0a1c;
+
+  /* Secondary — reserved for highlighting key information */
+  --orange:          #ff8b00;
+  --orange-light:    #ffe09c;
+  --red:             #dc143c;
+  --red-light:       #ffa9af;
+
+  /* Surfaces */
+  --bg:       var(--white);
+  --bg-2:     #faf9fd;
+  --bg-3:     #f3f1fa;
+
+  /* Ink — indigo-tinted neutrals, all 4.5:1 or better on white */
+  --fg:       var(--midnight);
+  --fg-2:     #3a3450;
+  --fg-3:     #585172;
+  --fg-4:     #726c8a;
+
+  /* Lines */
+  --line:     #e8e5f2;
+  --line-2:   #d6d1e6;
+
+  /* Inverted surface */
+  --inv-bg:   var(--midnight);
+  --inv-fg:   var(--white);
+  --inv-fg-2: #a9a3c0;
+  --inv-line: #272040;
+
+  --accent:    var(--indigo);
+  --accent-on: var(--white);
+  --accent-soft: var(--indigo-soft);
+
+  /* Measure */
+  --container: 1280px;
+  --gutter:    clamp(20px, 5vw, 40px);
+  --section:   clamp(56px, 7vw, 112px);
+
+  /* Type scale — restrained on purpose */
+  --t-display-xl: clamp(2.375rem, 5.6vw, 4.25rem);
+  --t-display-l:  clamp(1.875rem, 4.2vw, 3rem);
+  --t-display-m:  clamp(1.5rem, 2.9vw, 2.125rem);
+  --t-display-s:  clamp(1.125rem, 1.7vw, 1.3125rem);
+  --t-lead:       clamp(1rem, 1.15vw, 1.125rem);
+  --t-body:       1rem;
+  --t-small:      0.9375rem;
+  --t-label:      0.6875rem;
+
+  --radius:    12px;
+  --radius-sm: 8px;
+  --radius-lg: 16px;
+
+  /* Cards sit on a soft shadow rather than a border. */
+  --shadow-card:
+    0 1px 2px rgba(13, 10, 28, 0.04),
+    0 10px 28px -14px rgba(13, 10, 28, 0.16);
+  --shadow-card-hover:
+    0 2px 4px rgba(13, 10, 28, 0.05),
+    0 18px 40px -16px rgba(13, 10, 28, 0.22);
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: light;
+}
+
+/* ---------- 2. RESET ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: var(--t-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: from-font;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.onInk :focus-visible {
+  outline-color: var(--indigo-light);
+}
+
+::selection {
+  background: var(--indigo);
+  color: var(--white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------- 3. LAYOUT ---------- */
+
+.shell {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Sections are separated by a single horizontal hairline. There are no
+   vertical rules anywhere on the site — columns are separated by space. */
+.band {
+  border-bottom: 1px solid var(--line);
+}
+.bandTop {
+  border-top: 1px solid var(--line);
+}
+.pad {
+  padding-block: var(--section);
+}
+.padHalf {
+  padding-block: calc(var(--section) * 0.6);
+}
+
+.onInk {
+  background: var(--inv-bg);
+  color: var(--inv-fg);
+  --line: var(--inv-line);
+  --line-2: #352c56;
+  --fg: var(--inv-fg);
+  --fg-2: #cfcade;
+  --fg-3: var(--inv-fg-2);
+  --fg-4: #8d86a8;
+  --bg: var(--inv-bg);
+  --bg-2: #15112a;
+  --bg-3: #1b1636;
+  /* Electric Indigo is too dark on Midnight Indigo — step it up. */
+  --accent: var(--indigo-light);
+  --accent-on: var(--midnight);
+  --accent-soft: #231a41;
+}
+.onInk.band {
+  border-bottom-color: var(--inv-bg);
+}
+
+/* ---------- 4. TYPE ---------- */
+
+/* Small caps label. Same typeface as everything else — the uppercase and the
+   tracking are what separate it. */
+.mono {
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+/* Figures align in columns. */
+.num {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.005em;
+}
+
+.lead {
+  font-size: var(--t-lead);
+  line-height: 1.6;
+  color: var(--fg-2);
+  max-width: 58ch;
+}
+
+.displayXL {
+  font-size: var(--t-display-xl);
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+}
+.displayL {
+  font-size: var(--t-display-l);
+  letter-spacing: -0.028em;
+  line-height: 1.1;
+}
+.displayM {
+  font-size: var(--t-display-m);
+  letter-spacing: -0.024em;
+  line-height: 1.18;
+}
+.displayS {
+  font-size: var(--t-display-s);
+  letter-spacing: -0.018em;
+  line-height: 1.3;
+}
+
+/* One phrase per headline carries the brand colour. */
+.em {
+  color: var(--accent);
+}
+.emInv {
+  color: var(--indigo-light);
+}
+.light {
+  color: var(--fg-3);
+  font-weight: 600;
+}
+
+/* ---------- 5. CONTROLS ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55em;
+  min-height: 48px;
+  padding-inline: 1.375rem;
+  border: 1px solid var(--indigo);
+  border-radius: var(--radius);
+  background: var(--indigo);
+  color: var(--white);
+  font-size: var(--t-small);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  cursor: pointer;
+  transition:
+    background 0.22s var(--ease),
+    border-color 0.22s var(--ease),
+    color 0.22s var(--ease);
+}
+.btn:hover {
+  background: var(--indigo-deep);
+  border-color: var(--indigo-deep);
+}
+
+.btnGhost {
+  background: transparent;
+  color: var(--fg);
+  border-color: var(--line-2);
+}
+.btnGhost:hover {
+  background: var(--bg-3);
+  border-color: var(--line-2);
+  color: var(--fg);
+}
+
+/* On Midnight Indigo the brand colour loses contrast, so the button flips. */
+.onInk .btn {
+  background: var(--white);
+  border-color: var(--white);
+  color: var(--midnight);
+}
+.onInk .btn:hover {
+  background: var(--indigo-light);
+  border-color: var(--indigo-light);
+  color: var(--midnight);
+}
+.onInk .btnGhost {
+  background: transparent;
+  color: var(--inv-fg);
+  border-color: var(--inv-line);
+}
+.onInk .btnGhost:hover {
+  background: var(--white);
+  color: var(--midnight);
+  border-color: var(--white);
+}
+
+/* Quiet text link with an arrow. */
+.linkArrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-size: var(--t-small);
+  font-weight: 500;
+  color: var(--accent);
+  transition: color 0.22s var(--ease);
+}
+.linkArrow svg {
+  transition: transform 0.3s var(--ease);
+}
+.linkArrow:hover {
+  color: var(--indigo-deep);
+}
+.linkArrow:hover svg {
+  transform: translateX(4px);
+}
+.onInk .linkArrow:hover {
+  color: var(--white);
+}
+
+/* ---------- 6. UTILITIES ---------- */
+
+.skip {
+  position: fixed;
+  left: var(--gutter);
+  top: 0;
+  transform: translateY(-120%);
+  z-index: 200;
+  background: var(--indigo);
+  color: var(--white);
+  padding: 0.7rem 1.1rem;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  font-size: var(--t-small);
+  font-weight: 500;
+  transition: transform 0.22s var(--ease);
+}
+.skip:focus-visible {
+  transform: translateY(0);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- 7. ICON TILES ----------
+   Filled glyph in a rounded tinted square. One tone per item cycles through
+   the brand set so a grid of features reads with colour, not just structure. */
+
+.iconTile {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 14px;
+  background: var(--tone-bg, var(--indigo-soft));
+  color: var(--tone-fg, var(--indigo-deep));
+}
+.iconTile[data-size="sm"] {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 11px;
+}
+
+[data-tone="indigo"] {
+  --tone-bg: #f2ebff;
+  --tone-fg: #5200cc;
+}
+[data-tone="orange"] {
+  --tone-bg: #ffe09c;
+  --tone-fg: #8f4f00;
+}
+[data-tone="red"] {
+  --tone-bg: #ffa9af;
+  --tone-fg: #a3102c;
+}
+[data-tone="ink"] {
+  --tone-bg: #e5e1f0;
+  --tone-fg: #0d0a1c;
+}
+
+/* On Midnight Indigo the tints invert to translucent washes. */
+.onInk [data-tone="indigo"] {
+  --tone-bg: rgba(101, 0, 254, 0.22);
+  --tone-fg: #c9a8ff;
+}
+.onInk [data-tone="orange"] {
+  --tone-bg: rgba(255, 139, 0, 0.18);
+  --tone-fg: #ffc266;
+}
+.onInk [data-tone="red"] {
+  --tone-bg: rgba(220, 20, 60, 0.2);
+  --tone-fg: #ff9aa4;
+}
+.onInk [data-tone="ink"] {
+  --tone-bg: rgba(255, 255, 255, 0.1);
+  --tone-fg: #ffffff;
+}
+
+/* ---------- 8. CARD ---------- */
+
+.card {
+  background: var(--bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  transition:
+    box-shadow 0.25s var(--ease),
+    transform 0.25s var(--ease);
+}
+.cardHover:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+.onInk .card {
+  background: #15112a;
+  box-shadow: none;
+}
