@@ -1,0 +1,131 @@
+.footer {
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 3.5rem);
+  padding-block: clamp(2.75rem, 5vw, 4.5rem) clamp(2.25rem, 4vw, 3.5rem);
+}
+
+/* ---------- brand ---------- */
+
+.mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.3125rem;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+.markDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--indigo);
+}
+
+.blurb {
+  margin-top: 0.9rem;
+  max-width: 30ch;
+  font-size: var(--t-small);
+  line-height: 1.6;
+  color: var(--fg-3);
+}
+
+/* ---------- columns ---------- */
+
+.colHead {
+  color: var(--fg-4);
+  margin-bottom: 1rem;
+}
+
+.col ul li a {
+  display: inline-block;
+  padding: 0.3rem 0;
+  font-size: var(--t-small);
+  color: var(--fg-2);
+  transition: color 0.2s var(--ease);
+}
+.col ul li a:hover {
+  color: var(--fg);
+}
+
+/* ---------- bottom bar ---------- */
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-block: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.8125rem;
+  color: var(--fg-4);
+}
+.bottom a:hover {
+  color: var(--fg);
+}
+
+@media (max-width: 900px) {
+  .top {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 2.5rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .top {
+    grid-template-columns: 1fr;
+  }
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+}
+
+.brand {
+  min-width: 0;
+}
+
+/* ---------- social row ---------- */
+
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.social li a {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--fg-3);
+  transition:
+    color 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    background 0.2s var(--ease);
+}
+.social li a:hover {
+  color: var(--indigo);
+  border-color: var(--indigo);
+  background: var(--accent-soft);
+}
+
+.address {
+  font-style: normal;
+  font-size: var(--t-small);
+  color: var(--fg-2);
+  padding: 0.3rem 0;
+}
+
+.footerBadges {
+  margin-top: 1.5rem;
+}
