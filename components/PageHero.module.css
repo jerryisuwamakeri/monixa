@@ -1,0 +1,74 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(230px, 0.7fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+  padding-block: clamp(3rem, 6vw, 5.5rem) clamp(3rem, 6vw, 5.5rem);
+}
+
+.main {
+  min-width: 0;
+}
+
+.kicker {
+  color: var(--fg-3);
+  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+}
+
+.title {
+  max-width: 22ch;
+}
+
+.lead {
+  margin-top: clamp(1.1rem, 2vw, 1.6rem);
+  max-width: 52ch;
+}
+
+.actions {
+  margin-top: clamp(1.6rem, 2.8vw, 2.25rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* ---------- facts ---------- */
+
+.specs {
+  padding-top: 0.4rem;
+}
+
+.specList {
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.specRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.875rem;
+}
+.specRow dt {
+  color: var(--fg-3);
+  flex: none;
+}
+
+.specValue {
+  margin: 0;
+  text-align: right;
+  line-height: 1.45;
+  color: var(--fg);
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+  .title {
+    max-width: none;
+  }
+}

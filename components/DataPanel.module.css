@@ -1,0 +1,137 @@
+.panel {
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  overflow: hidden;
+}
+.panel[data-variant="ink"] {
+  background: var(--inv-bg);
+  color: var(--inv-fg);
+  border-color: var(--inv-line);
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.125rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-2);
+}
+.panel[data-variant="ink"] .head {
+  background: #141414;
+  border-bottom-color: var(--inv-line);
+}
+
+.title {
+  color: var(--fg-3);
+}
+.panel[data-variant="ink"] .title {
+  color: var(--inv-fg);
+}
+
+.meta {
+  color: var(--fg-4);
+  white-space: nowrap;
+}
+
+.rows {
+  padding-inline: 1.125rem;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.panel[data-variant="ink"] .row {
+  border-bottom-color: var(--inv-line);
+}
+.row:last-child {
+  border-bottom: 0;
+}
+
+.labelWrap,
+.valueWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+.valueWrap {
+  align-items: flex-end;
+  text-align: right;
+  flex: none;
+}
+
+.label {
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+.sub {
+  font-size: 0.75rem;
+  color: var(--fg-4);
+}
+
+.value {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+.valueSub {
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-4);
+}
+
+/* The headline figure of a panel */
+.row[data-emphasis] {
+  padding-block: 1.15rem;
+}
+.row[data-emphasis] .value {
+  font-size: clamp(1.25rem, 2.1vw, 1.625rem);
+  letter-spacing: -0.028em;
+  font-weight: 600;
+}
+.row[data-emphasis] .label {
+  font-size: var(--t-label);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+/* Tones are weight and grey, never colour. */
+.row[data-tone="accent"] .value {
+  font-weight: 600;
+}
+.row[data-tone="positive"] .value {
+  font-weight: 600;
+}
+.row[data-tone="muted"] .value {
+  color: var(--fg-3);
+  font-weight: 400;
+}
+
+.foot {
+  display: block;
+  padding: 0.75rem 1.125rem;
+  border-top: 1px solid var(--line);
+  background: var(--bg-2);
+  color: var(--fg-4);
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  line-height: 1.55;
+  text-transform: none;
+}
+.panel[data-variant="ink"] .foot {
+  background: #141414;
+  border-top-color: var(--inv-line);
+  color: var(--fg-4);
+}

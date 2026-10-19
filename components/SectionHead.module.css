@@ -1,0 +1,71 @@
+.head {
+  max-width: 44ch;
+}
+.head.tight {
+  max-width: 28ch;
+}
+/* Full-width sections use the whole row. */
+.head.wide {
+  max-width: none;
+}
+
+/* Label row. No rule of its own — the section border already separates it. */
+.rail {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: clamp(0.85rem, 1.6vw, 1.15rem);
+  color: var(--fg-3);
+}
+
+
+
+.meta {
+  color: var(--fg-4);
+  white-space: nowrap;
+}
+
+.body {
+  display: grid;
+}
+.head.wide .body {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.25rem, 4vw, 4rem);
+  align-items: start;
+}
+
+.title {
+  max-width: 24ch;
+}
+.head.wide .title {
+  max-width: 18ch;
+}
+
+.lead {
+  margin-top: 0.9rem;
+  max-width: 52ch;
+}
+.head.wide .lead {
+  margin-top: 0.3rem;
+}
+
+@media (max-width: 860px) {
+  .head,
+  .head.tight,
+  .head.wide,
+  .title,
+  .head.wide .title {
+    max-width: none;
+  }
+  .head.wide .body {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .head.wide .lead {
+    margin-top: 0.9rem;
+  }
+  .meta {
+    display: none;
+  }
+}

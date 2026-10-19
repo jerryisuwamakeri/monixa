@@ -1,0 +1,40 @@
+.list {
+  display: grid;
+  column-gap: clamp(2rem, 4.5vw, 4rem);
+  border-top: 1px solid var(--line);
+}
+.list[data-columns="2"] {
+  grid-template-columns: 1fr 1fr;
+}
+.list[data-columns="1"] {
+  grid-template-columns: 1fr;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  gap: 0 1.1rem;
+  padding: clamp(1.25rem, 2.2vw, 1.75rem) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+
+.body {
+  min-width: 0;
+  padding-top: 0.15rem;
+}
+
+.title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  line-height: 1.35;
+}
+
+.text {
+  margin-top: 0.4rem;
+  font-size: var(--t-small);
+  line-height: 1.6;
+  color: var(--fg-3);
+  max-width: 50ch;
+}
