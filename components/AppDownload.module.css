@@ -1,0 +1,181 @@
+.section {
+  overflow: hidden;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding-block: clamp(3rem, 6vw, 5.5rem) 0;
+}
+
+.copy {
+  min-width: 0;
+  padding-bottom: clamp(3rem, 6vw, 5.5rem);
+}
+
+.kicker {
+  color: var(--indigo-light);
+  margin-bottom: 1rem;
+}
+
+.title {
+  max-width: 16ch;
+}
+
+.body {
+  margin-top: 1rem;
+  max-width: 48ch;
+  font-size: var(--t-lead);
+  line-height: 1.6;
+  color: var(--inv-fg-2);
+}
+
+.badges {
+  margin-top: clamp(1.6rem, 3vw, 2.25rem);
+}
+
+.note {
+  margin-top: 1.1rem;
+  font-size: 0.8125rem;
+  color: var(--fg-4);
+}
+
+/* ---------- phone ---------- */
+
+.phoneWrap {
+  display: flex;
+  justify-content: center;
+  align-self: end;
+}
+
+.phone {
+  position: relative;
+  width: min(300px, 100%);
+  padding: 12px 12px 0;
+  border-radius: 40px 40px 0 0;
+  background: #1c1733;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 -10px 60px -20px rgba(101, 0, 254, 0.7);
+}
+
+.notch {
+  width: 104px;
+  height: 22px;
+  margin: 2px auto 10px;
+  border-radius: 999px;
+  background: #0d0a1c;
+}
+
+.screen {
+  border-radius: 28px 28px 0 0;
+  background: #0d0a1c;
+  padding: 20px 18px 32px;
+  min-height: 320px;
+}
+
+.screenHead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.screenBrand {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.screenTag {
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8d86a8;
+}
+
+/* Headline figure: label, amount and conversion each on their own line. */
+.total {
+  display: grid;
+  gap: 4px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.totalLabel {
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8d86a8;
+}
+.totalValue {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: #fff;
+}
+.totalSub {
+  font-size: 0.75rem;
+  color: #a9a3c0;
+}
+
+.rows {
+  display: grid;
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.row:last-child {
+  border-bottom: 0;
+}
+
+.rowLeft {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.rowName {
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  color: #fff;
+}
+.rowMeta {
+  font-size: 0.6875rem;
+  line-height: 1.3;
+  color: #8d86a8;
+}
+
+.rowValue {
+  flex: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #fff;
+  text-align: right;
+}
+
+@media (max-width: 960px) {
+  .inner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+  .copy {
+    padding-bottom: 0;
+  }
+  .title {
+    max-width: none;
+  }
+  .phoneWrap {
+    justify-content: flex-start;
+  }
+}
