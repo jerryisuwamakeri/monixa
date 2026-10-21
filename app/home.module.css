@@ -1,0 +1,133 @@
+/* ---------- hero ---------- */
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.72fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+  padding-block: clamp(3rem, 6vw, 5.5rem);
+}
+
+.h1 {
+  max-width: 18ch;
+}
+
+.heroLead {
+  margin-top: clamp(1.25rem, 2.2vw, 1.75rem);
+  max-width: 54ch;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1rem, 2.4vw, 1.75rem);
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.heroPanel {
+  min-width: 0;
+}
+
+/* ---------- problem ---------- */
+
+.problem {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.3fr);
+  gap: clamp(2rem, 4.5vw, 4.5rem);
+  align-items: start;
+}
+.problemList {
+  min-width: 0;
+}
+
+/* ---------- products ---------- */
+
+.productsHead {
+  padding-bottom: clamp(1.75rem, 3.4vw, 2.75rem);
+}
+
+/* ---------- flow ---------- */
+
+.flowWrap {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.4fr);
+  gap: clamp(2rem, 4.5vw, 4.5rem);
+  align-items: start;
+}
+
+.flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2.6vw, 2rem);
+}
+
+/* Each step is its own card; space separates them, not a rule. */
+.flowStep {
+  padding: clamp(1.25rem, 2.2vw, 1.625rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.flowIcon {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.flowTitle {
+  margin-top: 0.9rem;
+  font-weight: 600;
+}
+
+.flowBody {
+  margin-top: 0.55rem;
+  font-size: var(--t-small);
+  line-height: 1.6;
+  color: var(--fg-3);
+}
+
+/* ---------- breakpoints ---------- */
+
+@media (max-width: 1040px) {
+  .heroGrid {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 2.5rem;
+  }
+  .heroPanel {
+    max-width: 440px;
+  }
+  .problem,
+  .flowWrap {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.25rem;
+  }
+  .h1 {
+    max-width: 22ch;
+  }
+}
+
+@media (max-width: 760px) {
+  .flow {
+    grid-template-columns: 1fr;
+  }
+  .flowStep {
+    padding: 1.25rem;
+  }
+  .h1 {
+    max-width: none;
+  }
+}
+
+.heroCopy {
+  min-width: 0;
+}
+
+.heroBadges {
+  margin-top: clamp(1.5rem, 2.8vw, 2.25rem);
+}
