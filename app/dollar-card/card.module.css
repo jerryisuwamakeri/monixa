@@ -1,0 +1,31 @@
+.showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4.5vw, 4.5rem);
+  align-items: center;
+}
+
+.cardSlot {
+  max-width: 440px;
+  width: 100%;
+}
+
+.states {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  max-width: 800px;
+}
+
+@media (max-width: 1040px) {
+  .showcase {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.25rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .states {
+    grid-template-columns: 1fr;
+  }
+}
