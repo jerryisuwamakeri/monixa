@@ -1,0 +1,106 @@
+.form {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  padding: clamp(1.25rem, 2.6vw, 1.875rem);
+}
+
+.formHead {
+  color: var(--fg-4);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 1.1rem;
+}
+
+.field label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--fg-2);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: var(--t-small);
+  line-height: 1.5;
+  color: var(--fg);
+  background: var(--bg);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-sm);
+  padding: 0.72rem 0.875rem;
+  transition:
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+  appearance: none;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 7rem;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--fg-4);
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: var(--fg-4);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--fg);
+  box-shadow: 0 0 0 3px rgba(10, 10, 10, 0.08);
+}
+
+/* Only flag an invalid field once the browser has actually judged it. */
+.field input:user-invalid,
+.field textarea:user-invalid {
+  border-color: #b42318;
+}
+
+.selectWrap {
+  position: relative;
+}
+.selectWrap select {
+  padding-right: 2.25rem;
+  cursor: pointer;
+}
+.selectChev {
+  position: absolute;
+  right: 0.875rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--fg-3);
+  pointer-events: none;
+}
+
+.actions {
+  display: grid;
+  gap: 0.9rem;
+  padding-top: 0.4rem;
+}
+
+.hint {
+  color: var(--fg-4);
+  font-size: 0.75rem;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.55;
+  max-width: 46ch;
+}

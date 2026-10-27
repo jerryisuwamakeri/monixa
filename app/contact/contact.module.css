@@ -1,0 +1,66 @@
+.rail {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--fg-3);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(330px, 0.85fr);
+  gap: clamp(2.25rem, 4.5vw, 5rem);
+  align-items: start;
+  padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(3rem, 6vw, 5.5rem);
+}
+
+.copy {
+  min-width: 0;
+  /* The form is the taller column; centre the copy against it. */
+  align-self: center;
+}
+
+.h1 {
+  max-width: 22ch;
+}
+
+/* The email address is the point of the page, so it is set as display type. */
+.bigEmail {
+  display: inline-block;
+  margin-top: clamp(1.6rem, 3vw, 2.25rem);
+  font-size: clamp(1.1875rem, 2.8vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.028em;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--fg);
+  transition: color 0.2s var(--ease);
+}
+.bigEmail:hover {
+  color: var(--fg-3);
+}
+
+.formSlot {
+  position: sticky;
+  top: 104px;
+}
+
+@media (max-width: 1040px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+  .formSlot {
+    position: static;
+    max-width: 540px;
+  }
+  .h1 {
+    max-width: none;
+  }
+}
+
+.where {
+  margin-top: 1.5rem;
+  font-size: var(--t-small);
+  color: var(--fg-3);
+}
